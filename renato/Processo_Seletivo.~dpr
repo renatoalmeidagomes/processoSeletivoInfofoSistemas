@@ -1,0 +1,14 @@
+program Processo_Seletivo;
+
+uses
+  Forms,
+  uClientes in 'buscaCep-master\uClientes.pas' {FormCadCliente},
+  uEndereco in 'buscaCep-master\uEndereco.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TFormCadCliente, FormCadCliente);
+  Application.Run;
+end.

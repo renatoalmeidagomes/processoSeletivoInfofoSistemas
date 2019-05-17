@@ -1,0 +1,78 @@
+unit uClientes;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, Grids, DBGrids, DB, DBClient;
+
+type
+  TFormCadCliente = class(TForm)
+    CdsClientes: TClientDataSet;
+    dsClientes: TDataSource;
+    dbgrd1: TDBGrid;
+    btn1: TBitBtn;
+    strngfldCdsClientesnome: TStringField;
+    eCEP: TEdit;
+    eDS_END: TEdit;
+    eNM_BAIRRO: TEdit;
+    eNM_CIDADE: TEdit;
+    eDS_UF: TEdit;
+    btn2: TButton;
+    procedure btn1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btn2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormCadCliente: TFormCadCliente;
+
+implementation
+
+uses uEndereco;
+
+{$R *.dfm}
+
+procedure TFormCadCliente.btn1Click(Sender: TObject);
+begin
+   CdsClientes.Open;
+   CdsClientes.Insert;
+   CdsClientes.FieldByName('NOME').AsString := 'RENATO';
+   CdsClientes.Post;
+   CdsClientes.SaveToFile('C:\Clientes.xml');
+end;
+
+procedure TFormCadCliente.FormShow(Sender: TObject);
+begin
+   CdsClientes.LoadFromFile('C:\clientes.xml');
+end;
+
+procedure TFormCadCliente.btn2Click(Sender: TObject);
+
+var
+  _rEndereco: TEndereco;
+begin
+  eDS_END.Clear;
+  eNM_BAIRRO.Clear;
+  eNM_CIDADE.Clear;
+  eDS_UF.Clear;
+
+  if eCEP.Text = EmptyStr then
+    Exit;
+
+  _rEndereco := TEndereco.Create(eCEP.Text);
+  try
+    eDS_END.Text := _rEndereco.Logradouro;
+    eNM_BAIRRO.Text := _rEndereco.Bairro;
+    eNM_CIDADE.Text := _rEndereco.Cidade;
+    eDS_UF.Text := _rEndereco.UF;
+  finally
+    _rEndereco.Free;
+  end;
+end;
+
+end.

@@ -1,0 +1,114 @@
+object FormCadCliente: TFormCadCliente
+  Left = 314
+  Top = 157
+  Width = 928
+  Height = 480
+  Caption = 'Cadastro de Clientes'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object dbgrd1: TDBGrid
+    Left = 0
+    Top = 256
+    Width = 921
+    Height = 120
+    DataSource = dsClientes
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+  end
+  object btn1: TBitBtn
+    Left = 304
+    Top = 192
+    Width = 75
+    Height = 25
+    Caption = 'btn1'
+    TabOrder = 1
+    OnClick = btn1Click
+  end
+  object eCEP: TEdit
+    Left = 496
+    Top = 40
+    Width = 121
+    Height = 21
+    TabOrder = 2
+    Text = 'eCEP'
+  end
+  object eDS_END: TEdit
+    Left = 496
+    Top = 64
+    Width = 121
+    Height = 21
+    TabOrder = 3
+    Text = 'eDS_END'
+  end
+  object eNM_BAIRRO: TEdit
+    Left = 496
+    Top = 96
+    Width = 121
+    Height = 21
+    TabOrder = 4
+    Text = 'eNM_BAIRRO'
+  end
+  object eNM_CIDADE: TEdit
+    Left = 496
+    Top = 120
+    Width = 121
+    Height = 21
+    TabOrder = 5
+    Text = 'eNM_CIDADE'
+  end
+  object eDS_UF: TEdit
+    Left = 504
+    Top = 144
+    Width = 121
+    Height = 21
+    TabOrder = 6
+    Text = 'eDS_UF'
+  end
+  object btn2: TButton
+    Left = 520
+    Top = 200
+    Width = 75
+    Height = 25
+    Caption = 'btn2'
+    TabOrder = 7
+    OnClick = btn2Click
+  end
+  object CdsClientes: TClientDataSet
+    Active = True
+    Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'nome'
+        DataType = ftString
+        Size = 20
+      end>
+    IndexDefs = <>
+    Params = <>
+    StoreDefs = True
+    Left = 208
+    Top = 144
+    Data = {
+      330000009619E0BD0100000018000000010000000000030000003300046E6F6D
+      6501004900000001000557494454480200020014000000}
+    object strngfldCdsClientesnome: TStringField
+      FieldName = 'nome'
+    end
+  end
+  object dsClientes: TDataSource
+    DataSet = CdsClientes
+    Left = 136
+    Top = 168
+  end
+end
